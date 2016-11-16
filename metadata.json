@@ -1,0 +1,38 @@
+{
+  "name": "librato",
+  "version": "1.0.0",
+  "author": "Librato",
+  "license": "Apache-2.0",
+  "summary": "Install and configure the Librato Agent",
+  "source": "https://github.com/librato/puppet-librato",
+  "project_page": "https://forge.puppetlabs.com/librato/librato",
+  "issues_url": "https://github.com/librato/puppet-librato/issues",
+  "tags": ["librato", "collectd"],
+  "operatingsystem_support": [
+    {
+      "operatingsystem":"RedHat",
+      "operatingsystemrelease":[ "7", "6" ]
+    },
+    {
+      "operatingsystem":"Fedora",
+      "operatingsystemrelease":[ "23" ]
+    },
+    {
+      "operatingsystem":"Amazon Linux",
+      "operatingsystemrelease":[ "2016.03" ]
+    },
+    {
+      "operatingsystem":"Debian",
+      "operatingsystemrelease":[ "8", "7" ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [ "16.04", "15.10", "15.04", "14.04", "12.04" ]
+    }
+   ],
+  "dependencies": [
+    { "name": "puppetlabs/stdlib" },
+    { "name": "puppetlabs/apt" },
+    { "name": "stahnma/epel" }
+  ]
+}

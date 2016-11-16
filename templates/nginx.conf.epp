@@ -1,0 +1,4 @@
+LoadPlugin nginx
+<Plugin nginx>
+  URL "<%= $protocol %>://<%= $host %><%= $path %>"
+</Plugin>

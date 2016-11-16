@@ -1,0 +1,8 @@
+LoadPlugin redis
+<Plugin redis>
+  <Node localhost>
+    Host "<%= $host %>"
+    Port "<%= $port %>"
+    Timeout <%= $timeout %>
+  </Node>
+</Plugin>

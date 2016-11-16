@@ -1,0 +1,13 @@
+<Plugin "python">
+  ModulePath "/opt/collectd/share/collectd/"
+
+  Import "collectd-elasticsearch"
+
+  <Module "collectd-elasticsearch">
+    Url "<%= $protocol %>://<%= $host %>:<%= $port %>"
+    <% if $cluster_name { -%>
+    Name "<%= $cluser_name %>"
+    <% } %>
+    Verbose <%= $verbose %>
+  </Module>
+</Plugin>

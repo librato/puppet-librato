@@ -1,0 +1,11 @@
+LoadPlugin python
+<Plugin python>
+  ModulePath "/opt/collectd/share/collectd"
+  Import "collectd-nginx_plus"
+  LogTraces true
+
+  <Module "collectd-nginx_plus">
+    URL "<%= $protocol %>://<%= $host %><%= $path %>"
+    Verbose <%= $verbose %>
+  </Module>
+</Plugin>

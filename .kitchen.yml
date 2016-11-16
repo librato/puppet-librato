@@ -1,0 +1,67 @@
+driver:
+  name: vagrant
+
+provisioner:
+  name: puppet_apply
+  require_chef_for_busser: false
+  manifests_path: manifests
+  modules_path: modules
+  require_puppet_repo: false
+  puppetfile_path: Puppetfile
+  require_puppet_collections: true
+  resolve_with_librarian_puppet: true
+
+verifier:
+  ruby_bindir: '/opt/puppetlabs/puppet/bin'
+
+platforms:
+  - name: centos-6.6
+    driver:
+      box: puppetlabs/centos-6.6-64-puppet
+  - name: centos-7.2
+    driver:
+      box: puppetlabs/centos-7.2-64-puppet
+  - name: fedora-23
+    driver:
+      box: bento/fedora-23
+    provisioner:
+      puppet_yum_collections_repo: http://yum.puppetlabs.com/puppetlabs-release-pc1-fedora-23.noarch.rpm
+  - name: amazonlinux-2016.03
+    driver:
+      name: ec2
+      image_id: ami-7172b611
+      aws_ssh_key_id: test-kitchen
+      region: us-west-2
+      availability_zone: a
+      instance_type: t2.large
+      associate_public_ip: true
+      interface: dns
+    transport:
+      username: ec2-user
+      ssh_key: ~/.ssh/id_rsa
+    provisioner:
+      puppet_yum_collections_repo: http://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
+  - name: debian-7.8
+    driver:
+      box: puppetlabs/debian-7.8-64-puppet
+  - name: debian-8.2
+    driver:
+      box: puppetlabs/debian-8.2-64-puppet
+  - name: ubuntu-12.04
+    driver:
+      box: puppetlabs/ubuntu-12.04-64-puppet
+  - name: ubuntu-14.04
+    driver:
+      box: puppetlabs/ubuntu-14.04-64-puppet
+  - name: ubuntu-15.04
+    driver:
+      box: bento/ubuntu-15.04
+  - name: ubuntu-15.10
+    driver:
+      box: bento/ubuntu-15.10
+  - name: ubuntu-16.04
+    driver:
+      box: puppetlabs/ubuntu-16.04-64-puppet
+
+suites:
+  - name: default

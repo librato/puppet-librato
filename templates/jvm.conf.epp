@@ -1,0 +1,51 @@
+LoadPlugin java
+
+Include "/opt/collectd/share/collectd/jvm_default.conf"
+
+<Plugin "java">
+  <Plugin "GenericJMX">
+    <Connection>
+      Host "<%= $host %>"
+      ServiceURL "<%= $service_url %>"
+      Collect "memory_heap"
+      Collect "memory_nonheap"
+      Collect "classes"
+      Collect "threads"
+      Collect "compilation"
+      Collect "garbage_collector"
+      Collect "memory_pool"
+  <% if $mbeans { %>
+    <% $mbeans.each |$mbean| { %>
+      Collect "<%= $mbean['name'] %>"
+    <% } %>
+  <% } %>
+    </Connection>
+<% if $mbeans { %>
+  <% $mbeans.each |$mbean| { %>
+    <MBean "<%= $mbean['name'] %>">
+      ObjectName "<%= $mbean['object_name'] %>"
+    <% if $mbean['instance_prefix'] { %>
+      InstancePrefix "<%= $mbean['instance_prefix'] %>"
+    <% } %>
+    <% if $mbean['instance_from'] { %>
+      InstanceFrom "<%= $mbean['instance_from'] %>"
+    <% } %>
+
+    <% $mbean['values'].each |$value| { %>
+      <Value>
+        Type "<%= $value['type'] %>"
+        Table <%= $value['table'] %>
+        Attribute "<%= $value['attribute'] %>"
+      <% if $value['instance_prefix'] { %>
+        InstancePrefix "<%= $value['instance_prefix'] %>"
+      <% } %>
+      <% if $value['instance_from'] { %>
+        InstanceFrom "<%= $value['instance_from'] %>"
+      <% } %>
+      </Value>
+    <% } %>
+    </MBean>
+  <% } %>
+<% } %>
+  </Plugin>
+</Plugin>

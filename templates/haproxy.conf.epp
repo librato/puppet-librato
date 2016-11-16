@@ -1,0 +1,11 @@
+<Plugin python>
+  ModulePath "/opt/collectd/share/collectd"
+  Import "collectd-haproxy"
+
+  <Module "collectd-haproxy">
+    Socket "<%= $socket_file %>"
+    <% $proxies.each |$proxy| { %>
+    ProxyMonitor "<%= $proxy %>"
+    <% } %>
+  </Module>
+</Plugin>

@@ -1,0 +1,23 @@
+LoadPlugin mysql
+<Plugin "mysql">
+<% $databases.each |$db| { %>
+  <Database "<%= $db['name'] %>">
+    Host "<%= $db['host'] %>"
+    User "<%= $db['user'] %>"
+    <% if $db['password'] { %>
+    Password "<%= $db['password'] %>"
+    <% } %>
+    <% if $db['port'] { %>
+    Port <%= $db['port'] %>
+    <% } else { %>
+    Port 3306
+    <% } %>
+    <% if $db['innodb_stats'] { %>
+    InnodbStats <%= $db['innodb_stats'] %>
+    <% } %>
+    <% if $db['slave_stats'] { %>
+    SlaveStats <%= $db['slave_stats'] %>
+    <% } %>
+  </Database>
+<% } %>
+</Plugin>
