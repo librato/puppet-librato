@@ -451,10 +451,6 @@ Testing Amazon Linux through `test-kitchen` requires a bit more setup:
 3. Set `security_group_ids` in the driver section to include a security group accessible from your laptop. Not setting this will use the `default`    security group.
 4. Set `transport.ssh_key` to the path of your SSH key. It looks for `id_rsa` by default.
 
-#### Testing Fedora
-
-`kitchen-puppet` has a limitation around Puppet installation. To work around the issue, install `puppet-agent` manually on Fedora then run `kitchen verify fedora-23` to run the test suite.
-
 ## Release Notes/Contributors/Etc.
 
 **Author:** Mike Julian (@mjulian)
