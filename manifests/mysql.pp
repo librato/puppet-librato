@@ -1,6 +1,6 @@
 # doc
 class librato::mysql (
-  Array $databases = []
+  Optional[Array] $databases = undef
 ) {
   file {"${librato::plugin_config_path}/mysql.conf":
     ensure  => file,

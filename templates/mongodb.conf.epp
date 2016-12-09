@@ -11,13 +11,13 @@
   <Module "collectd-mongodb">
     Host "<%= $host %>"
     Port "<%= $port %>"
-    <% if $user { %>
+    <% unless $user  =~ Undef { %>
     User "<%= $user %>"
     <% } %>
-    <% if $password { %>
+    <% unless $password =~ Undef { %>
     Password "<%= $password %>"
     <% } %>
-    <% if $databases { %>
+    <% unless $databases =~ Undef { %>
     Database "admin", "<%= $databases.join('", "') %>"
     <% } %>
     Name "<%= $mongodb_name %>"

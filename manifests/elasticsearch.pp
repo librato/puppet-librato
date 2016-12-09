@@ -3,7 +3,7 @@ class librato::elasticsearch (
   String $protocol = 'http',
   String $host = 'localhost',
   String $port = '9200',
-  String $cluster_name = nil,
+  Optional[String] $cluster_name = undef,
   Boolean $verbose = true
 ) {
   file {"${librato::plugin_config_path}/elasticsearch.conf":

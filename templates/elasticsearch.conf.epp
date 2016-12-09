@@ -5,7 +5,7 @@
 
   <Module "collectd-elasticsearch">
     Url "<%= $protocol %>://<%= $host %>:<%= $port %>"
-    <% if $cluster_name { -%>
+    <% unless $cluster_name =~ Undef { -%>
     Name "<%= $cluser_name %>"
     <% } %>
     Verbose <%= $verbose %>

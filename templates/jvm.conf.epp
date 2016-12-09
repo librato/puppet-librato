@@ -14,13 +14,13 @@ Include "/opt/collectd/share/collectd/jvm_default.conf"
       Collect "compilation"
       Collect "garbage_collector"
       Collect "memory_pool"
-  <% if $mbeans { %>
+  <% unless $mbeans =~ Undef { %>
     <% $mbeans.each |$mbean| { %>
       Collect "<%= $mbean['name'] %>"
     <% } %>
   <% } %>
     </Connection>
-<% if $mbeans { %>
+<% unless $mbeans =~ Undef { %>
   <% $mbeans.each |$mbean| { %>
     <MBean "<%= $mbean['name'] %>">
       ObjectName "<%= $mbean['object_name'] %>"
