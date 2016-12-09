@@ -3,8 +3,8 @@ class librato::apache (
   String $protocol = 'http',
   String $host = 'localhost',
   String $path = '/server-status',
-  String $user = nil,
-  String $password = nil
+  Optional[String] $user = undef,
+  Optional[String] $password = undef
 ) {
   file {"${librato::plugin_config_path}/apache.conf":
     ensure  => file,

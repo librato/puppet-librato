@@ -102,10 +102,10 @@ The base path for collectd's config files. Valid options: `string`. Default: `/o
 The path for collectd's plugin configs. Valid options: `string`. Default: `/opt/collectd/etc/collectd.conf.d`.
 
 ##### `hostname`
-The hostname to use for the node. Valid options: `string`. Default: `$facter['fqdn']`.
+The hostname to use for the node. Valid options: `string`. Default: `nil` in favor of using `FQDNLookup`.
 
 ##### `fqdn_lookup`
-Perform an FQDN lookup or not. Valid options: `boolean`. Default: `false`.
+Perform an FQDN lookup for the hostname. Valid options: `boolean`. Default: `true`.
 
 ##### `interval`
 The global plugin polling interval in seconds. Valid options: `integer`. Default: `60`.
