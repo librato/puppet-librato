@@ -2,7 +2,7 @@
 class librato::postgresql (
   String $socket_file = '/var/run/postgresql',
   String $user = 'postgresql',
-  Array $databases = []
+  Optional[Array] $databases = undef
 ) {
   file {"${librato::plugin_config_path}/postgresql.conf":
     ensure  => file,
