@@ -1,1 +1,4 @@
-Exec "nobody" "/opt/collectd/share/collectd/collectd-docker.py" "<%= $protocol %>://<%= $host %>:<%= $port %>"
+LoadPlugin exec
+<Plugin exec>
+  Exec "nobody" "/opt/collectd/share/collectd/collectd-docker.py" "<%= $protocol %>://<%= $host %>:<%= $port %>"
+</Plugin>

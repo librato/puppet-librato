@@ -1,6 +1,6 @@
 {
   "name": "librato-librato",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Librato",
   "license": "Apache-2.0",
   "summary": "Install and configure the Librato Agent",
